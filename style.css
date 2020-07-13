@@ -8,6 +8,7 @@ ul,li {
 input[type="text"] {
     border: none;
     outline: none;
+    font-family: inherit;
 }
 
 button {
@@ -15,4 +16,124 @@ button {
     background: none;
     outline: none;
     cursor: pointer;
+}
+
+/* Styling */
+body {
+    background-color: #C1C6CF;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#app .list::-webkit-scrollbar {
+    width: 10px;
+    background: none;
+}
+#app .list::-webkit-scrollbar-thumb {
+    background: #f2f2f2;
+    opacity: .5;
+    border-radius: 30px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+#app .list::-webkit-scrollbar-track {
+    background: none;
+}
+
+#app {
+    background: rgb(238,174,202);
+    background: -moz-linear-gradient(110deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: -webkit-linear-gradient(110deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: linear-gradient(110deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eeaeca",endColorstr="#94bbe9",GradientType=1);
+    width: 350px;
+    height: 600px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.5);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+#app header {
+    height: 10%
+}
+
+#app header h1{
+    text-align: center;
+    margin: 0;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#app main {
+    background-color: #E5E4E7;
+    height: 80%;
+    position: relative;
+}
+
+#app main:after {
+    content: '';
+    box-shadow: inset 0 0 10px rgba(200, 200, 200, 0.8);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+#app main .list {
+    overflow: scroll;
+    height: 470px;
+}
+
+#app main .item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2em;
+    padding: 12px 24px;
+    position: relative;
+    border-bottom: 1px solid lightgray;
+}
+
+#app main .item .deleteBtn {
+    cursor: pointer;
+}
+
+#app main #inputText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+    height: 25px;
+    font-size: 1.2em;
+    padding-right: 0;
+    padding-left: 0;
+    text-indent: 8px;
+}
+
+#app footer {
+    display: flex;
+    flex-direction: column;
+}
+
+#app footer .plusBtn {
+    font-size: 3em;
+    width: 0.8em;
+    height: 0.8em;
+    margin: 12px auto;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+}
+
+#app footer .plusBtn i {
+    display: block;
+    margin-left: -11px; 
+    margin-top: -6px;
 }
