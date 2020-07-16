@@ -97,14 +97,34 @@ body {
     font-size: 1.2em;
     padding: 12px 24px;
     position: relative;
-    border-bottom: 1px solid lightgray;
 }
 
-#app main .item .deleteBtn {
+#app main .item:after {
+    content: '';
+    height: 1px;
+    background-color: lightgray;
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+}
+
+#app main .item__deleteBtn {
     cursor: pointer;
+    font-size: 1em;
+    transition: 250ms ease-in;
 }
 
-#app main #inputText {
+#app main .item__deleteBtn:hover {
+    color: red;
+    transform: scale(1.1);
+}
+
+#app main .item__deleteBtn i {
+    vertical-align: bottom;
+}
+
+#app main .inputText {
     position: absolute;
     left: 0;
     right: 0;
@@ -130,10 +150,17 @@ body {
     background-color: white;
     border-radius: 50%;
     position: relative;
+    transition: .3s ease;
 }
+
+#app footer .plusBtn:hover {
+    color: lightcoral;
+    transform: rotate(720deg);
+} 
 
 #app footer .plusBtn i {
     display: block;
     margin-left: -11px; 
     margin-top: -6px;
 }
+

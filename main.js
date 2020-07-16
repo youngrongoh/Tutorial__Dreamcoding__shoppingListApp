@@ -1,32 +1,22 @@
 const list = document.querySelector('.list');
 const plus = document.querySelector('.plusBtn');
-const inputText = document.querySelector('#inputText');
+const inputText = document.querySelector('.inputText');
 
 // Add item
-function additem(text) {
+function createItem(text) {
     // Create a item element as li tag
     const item = document.createElement('li'); // <li></li>
     item.setAttribute('class', 'item'); // <li class="item"></li>
 
     // Create a item's name element as div tag
     const name = document.createElement('div'); // <div></div>
-    name.setAttribute('class', 'name'); // <div class="name"></div>
-    name.textContent = text; // <div class="name" data-name="text">text</div>
-
-    // Create a icon element as i tag
-    const icon = document.createElement('i'); // <i></i>
-    icon.setAttribute('class', 'fas fa-trash-alt'); // <i class="fas fa-trash-alt"></i>
+    name.setAttribute('class', 'item__name'); // <div class="item__name"></div>
+    name.textContent = text; // <div class="item__name" data-name="text">text</div>
 
     // Create a delete button adding icon
-    const deleteBtn = document.createElement('div'); // <div></div>
-    deleteBtn.setAttribute('class', 'deleteBtn'); // <div class="deleteBtn"></div>
-    deleteBtn.appendChild(icon); // <div class="deleteBtn"><i class="fas fa-trash-alt"></i></div>
-
-    // Add eventListener on deleteBtn
-    deleteBtn.addEventListener('click', (e) => {
-        const thisItem = e.target.parentElement.parentElement;
-        list.removeChild(thisItem);
-    });
+    const deleteBtn = document.createElement('button'); // <button></button>
+    deleteBtn.setAttribute('class', 'item__deleteBtn'); // <button class="item__deleteBtn"></button>
+    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>'; // <button class="item__deleteBtn"><i class="fas fa-trash-alt"></i></button>
 
     // Add child elements into item
     item.appendChild(name);
@@ -36,24 +26,34 @@ function additem(text) {
     list.appendChild(item);
 }
 
-// Add item when a plus button is clicked.
-plus.addEventListener('click', () => {
+function onAdd() {
     const text = inputText.value;
     if (!text) {
-        return
+        inputText.focus();
+        return;
     }
-    additem(text);
+    createItem(text);
     inputText.value = '';
+    inputText.focus();
+}
+
+
+list.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'I') {
+        return;
+    }
+    const thisItem = e.target.parentElement.parentElement;
+    list.removeChild(thisItem);
+});
+
+// Add item when a plus button is clicked.
+plus.addEventListener('click', () => {
+    onAdd();
 });
 
 // Add item when Enter is pressed.
-inputText.addEventListener('keydown', (e) => {
-    if (e.keyCode == 13) {
-        const text = inputText.value;
-        if (!text) {
-            return
-        }
-        additem(text);
-        inputText.value = '';
+inputText.addEventListener('keypress', (e) => {
+    if (e.key == 'Enter') {
+        onAdd();
     }
 });
